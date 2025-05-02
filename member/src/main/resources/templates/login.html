@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>login</title>
+</head>
+<body>
+<form action="/member/login" method="post">
+    이메일: <input type="text" name="memberEmail"> <br>
+    비밀번호: <input type="password" name="memberPassword"> <br>
+    <input type="submit" value="로그인">
+</form>
+
+<!-- 로그인 실패 시 에러 메세지 -->
+<p style="color:red">
+    [[${loginError}]]
+</p>
+
+<!-- 아이디, 비밀번호 찾기 -->
+<div>
+    <a href="/member/find-email"> 아이디 찾기</a>
+    <a href="/member/find-password"> 비밀번호 찾기</a>
+</div>
+
+</body>
+</html>
