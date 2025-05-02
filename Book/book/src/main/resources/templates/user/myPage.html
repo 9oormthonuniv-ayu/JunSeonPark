@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>마이페이지</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #f4f4f4;
+      padding: 40px;
+    }
+
+    .mypage-container {
+      max-width: 500px;
+      margin: auto;
+      background-color: white;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 0 15px rgba(0,0,0,0.1);
+    }
+
+    h2 {
+      text-align: center;
+      margin-bottom: 30px;
+      color: #333;
+    }
+
+    .form-group {
+      margin-bottom: 20px;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 6px;
+      font-weight: bold;
+      color: #555;
+    }
+
+    input {
+      width: 100%;
+      padding: 10px;
+      font-size: 14px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+
+    input[readonly] {
+      background-color: #f9f9f9;
+      color: #777;
+    }
+
+    .submit-btn {
+      width: 100%;
+      padding: 12px;
+      background-color: #2196F3;
+      color: white;
+      font-size: 16px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    .submit-btn:hover {
+      background-color: #1976D2;
+    }
+
+    .back-btn {
+    display: block;
+    margin-top: 10px;
+    padding: 12px;
+    background-color: #4CAF50;
+    color: white;
+    font-size: 16px;
+    text-align: center;
+    text-decoration: none;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.back-btn:hover {
+    background-color: #45a049;
+}
+.back-btn:hover {
+    background-color: #45a049;
+}
+  </style>
+</head>
+<body>
+<div class="mypage-container">
+  <h2>마이페이지</h2>
+
+  <form th:action="@{'/user/' + ${user.userId} + '/myPage'}" method="post">
+    <div class="form-group">
+      <label for="name">이름</label>
+      <input type="text" id="name" name="name" th:value="${user.name}" required>
+    </div>
+
+    <div class="form-group">
+      <label for="email">이메일</label>
+      <input type="text" id="email" name="email" th:value="${user.email}" readonly>
+    </div>
+
+    <div class="form-group">
+      <label for="password">비밀번호</label>
+      <input type="password" id="password" name="password" th:value="${user.password}" required>
+    </div>
+
+    <div class="form-group">
+      <label for="phone">전화번호</label>
+      <input type="text" id="phone" name="phone" th:value="${user.phone}" required>
+    </div>
+
+    <button type="submit" class="submit-btn">정보 수정</button>
+  </form>
+
+  <form th:action="@{'/user/' + ${user.userId} + '/delete'}" method="post" style="margin-top: 10px;">
+    <button type="submit" class="submit-btn" style="background-color: #f44336;">회원 탈퇴</button>
+  </form>
+
+  <a th:href="@{'/user/' + ${user.userId} + '/dashboard'}" class="back-btn">
+    메인으로 돌아가기
+  </a>
+
+
+</div>
+</body>
+</html>

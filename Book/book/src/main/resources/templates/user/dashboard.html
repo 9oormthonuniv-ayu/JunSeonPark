@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>도서 대여 시스템 - 메인</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f1f1f1;
+        }
+
+        .top-bar {
+            background-color: #333;
+            color: white;
+            padding: 10px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .top-bar .buttons a {
+            color: white;
+            text-decoration: none;
+            margin-left: 15px;
+            font-weight: bold;
+        }
+
+        .container {
+            height: 80vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .menu-buttons {
+            text-align: center;
+        }
+
+        .menu-buttons button {
+            display: block;
+            width: 250px;
+            margin: 15px auto;
+            padding: 15px;
+            font-size: 18px;
+            border: none;
+            border-radius: 10px;
+            background-color: #4CAF50;
+            color: white;
+            cursor: pointer;
+        }
+
+        .menu-buttons button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+
+<div class="top-bar">
+    <div class="welcome-msg">
+        <span th:text="'환영합니다, ' + ${user.name} + '님!'"></span>
+    </div>
+    <div class="buttons">
+        <a th:href="@{'/user/' + ${user.userId} + '/myPage'}">마이페이지</a>
+        <a href="/user/logout">로그아웃</a>
+    </div>
+</div>
+
+<div class="container">
+    <div class="menu-buttons">
+        <button onclick="location.href='/book/list'">전체 책 리스트 보기</button>
+        <button onclick="location.href='/book/reserve'">도서 예약하기</button>
+        <button onclick="location.href='/user/rentals'">나의 빌린 책 보기</button>
+    </div>
+</div>
+
+</body>
+</html>

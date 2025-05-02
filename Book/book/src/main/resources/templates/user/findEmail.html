@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+  <meta charset="UTF-8">
+  <title>아이디(이메일) 찾기</title>
+  <style>
+    body {
+        margin: 0;
+        padding: 0;
+        background-color: #f1f1f1;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+    }
+
+    .find-container {
+        background-color: white;
+        padding: 40px;
+        border-radius: 10px;
+        box-shadow: 0px 4px 20px rgba(0,0,0,0.1);
+        width: 400px;
+        text-align: center;
+    }
+
+    h2 {
+        margin-bottom: 30px;
+        color: #333;
+    }
+
+    .form-group {
+        margin-bottom: 20px;
+        text-align: left;
+    }
+
+    label {
+        display: block;
+        margin-bottom: 8px;
+        font-weight: bold;
+    }
+
+    input[type="text"] {
+        width: 100%;
+        padding: 10px;
+        font-size: 14px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+    }
+
+    .submit-btn {
+        width: 100%;
+        padding: 12px;
+        background-color: #2196F3;
+        color: white;
+        font-size: 16px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+
+    .submit-btn:hover {
+        background-color: #1976D2;
+    }
+
+    .result-msg {
+        margin-top: 20px;
+        font-size: 14px;
+        color: green;
+    }
+  </style>
+</head>
+<body>
+<div class="find-container">
+  <h2>아이디(이메일) 찾기</h2>
+  <form action="/user/find-email" method="post">
+    <div class="form-group">
+      <label for="name">이름</label>
+      <input type="text" id="name" name="name" required>
+    </div>
+
+    <div class="form-group">
+      <label for="phone">전화번호</label>
+      <input type="text" id="phone" name="phone" required>
+    </div>
+
+    <button type="submit" class="submit-btn">아이디 찾기</button>
+  </form>
+
+  <!-- 서버에서 email 결과가 모델로 전달되었을 때 출력 -->
+  <div class="result-msg">
+    <p th:if="${foundEmail}" th:text="${foundEmail}"></p>
+  </div>
+  <div class="error-msg">
+    <p th:if="${findEmailError}" th:text="${findEmailError}"></p>
+  </div>
+
+</div>
+</body>
+</html>

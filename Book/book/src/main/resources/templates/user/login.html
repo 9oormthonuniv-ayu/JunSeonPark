@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>로그인 - 도서관리 시스템</title>
+  <style>
+    body {
+        margin: 0;
+        padding: 0;
+        background-color: #f1f1f1;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+    }
+
+    .login-container {
+        background-color: white;
+        padding: 40px;
+        border-radius: 10px;
+        box-shadow: 0px 4px 20px rgba(0,0,0,0.1);
+        width: 350px;
+        text-align: center;
+    }
+
+    h2 {
+        margin-bottom: 30px;
+        color: #333;
+    }
+
+    input[type="text"],
+    input[type="password"] {
+        width: 100%;
+        padding: 12px;
+        margin: 10px 0;
+        border: 1px solid #ccc;
+        border-radius: 6px;
+        font-size: 14px;
+    }
+
+    button {
+        width: 100%;
+        padding: 12px;
+        margin-top: 20px;
+        background-color: #4CAF50;
+        border: none;
+        color: white;
+        font-size: 16px;
+        border-radius: 6px;
+        cursor: pointer;
+    }
+
+    button:hover {
+        background-color: #45a049;
+    }
+
+    .links {
+        margin-top: 15px;
+        display: flex;
+        justify-content: space-between;
+        font-size: 13px;
+    }
+
+    .links a {
+        color: #2196F3;
+        text-decoration: none;
+    }
+
+    .links a:hover {
+        text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+<div class="login-container">
+  <h2>로그인</h2>
+  <form th:action="@{/user/login}" method="post">
+    <input type="text" name="email" placeholder="아이디" required>
+    <input type="password" name="password" placeholder="비밀번호" required>
+    <button type="submit">로그인</button>
+  </form>
+  <div class="links">
+    <a href="/user/find-email">아이디 찾기</a>
+    <a href="/user/find-password">비밀번호 찾기</a>
+  </div>
+
+  <!-- 로그인 실패 시 에러 메세지 -->
+  <p style="color:red">
+    [[${loginError}]]
+  </p>
+
+</div>
+</body>
+</html>
