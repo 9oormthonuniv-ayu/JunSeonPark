@@ -1,2 +1,4 @@
 # spring-user-api
-Spring Framework를 이용한 회원관리
+구름톤 회원 기능 과제
+
+JWT, Spring Security
