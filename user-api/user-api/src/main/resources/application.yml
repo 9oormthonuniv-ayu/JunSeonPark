@@ -1,0 +1,32 @@
+server.port: 8080
+
+# database 연동 설정
+spring:
+  config:
+    import: optional:file:.env[.properties]
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    url: ${DB_URL}
+    username: ${DB_USER}
+    password: ${DB_PASSWORD}
+  redis:
+    host: ${REDIS_HOST}
+    port: ${REDIS_PORT}
+  thymeleaf:
+    cache: false
+  jwt:
+    secret: ${JWT_SECRET}
+    access-token-expire-time: 1800000 # 30분
+    refresh-token-expire-time: 1209600000 # 14일
+
+  # spring data jpa 설정
+  jpa:
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+    open-in-view: false
+    show-sql: true
+    hibernate:
+      ddl-auto: update
+
+logging:
+  level:
+    org.springframework.web: DEBUG
