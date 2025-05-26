@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>findEmail</title>
+</head>
+<body>
+<h2>아이디 찾기</h2>
+<form action="/member/find-email" method="post">
+    이름 : <input type="text" name="memberName" required> <br>
+    전화번호 : <input type="tel" name="memberTel" placeholder="010-1234-5678" required> <br>
+    생년월일 : <input type="date" name="memberBirth" required > <br>
+    <input type="submit" value="아이디 찾기">
+</form>
+
+<div>
+<p style="color:red">
+    [[${findEmailError}]]
+</p>
+<p style="color:green">
+    [[${foundEmail}]]
+</p>
+</div>
+
+<a href="/">index로 가기</a>
+</body>
+</html>
